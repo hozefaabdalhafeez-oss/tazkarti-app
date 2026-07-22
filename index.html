@@ -1,20 +1,100 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <title>تذكرتي</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تذكرتي</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+}
+
+header {
+    background: #0d6efd;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+.logo {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px #ccc;
+}
+
+button {
+    background: #0d6efd;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+</style>
+
 </head>
 
 <body>
 
-<h1>🚍 تذكرتي</h1>
+<header>
+    <div class="logo">🎫 تذكرتي</div>
+    <p>احجز تذكرتك بسهولة</p>
+</header>
 
-<p>أحجز تذكرتك بسهولة</p>
+<div class="container">
 
-<button onclick="welcome()">ابدأ الحجز</button>
+<div class="card">
+<h2>ابحث عن رحلة</h2>
 
-<script src="app.js"></script>
+<label>من</label>
+<select>
+<option>الخرطوم</option>
+<option>عطبرة</option>
+<option>بورتسودان</option>
+<option>مدني</option>
+</select>
+
+<label>إلى</label>
+<select>
+<option>دنقلا</option>
+<option>كسلا</option>
+<option>شندي</option>
+<option>مروي</option>
+</select>
+
+<button>بحث عن الرحلات</button>
+
+</div>
+
+<div class="card">
+<h2>رحلات مميزة</h2>
+<p>🚌 الخرطوم → دنقلا</p>
+<p>🚌 الخرطوم → بورتسودان</p>
+</div>
+
+</div>
 
 </body>
 </html>
