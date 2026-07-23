@@ -57,15 +57,19 @@ button{
 <div class="container">
 
 <div class="item">🚌 الرحلة: الخرطوم → دنقلا</div>
-<div class="item">💺 المقعد: 1</div>
-<div class="item">👤 الاسم: —</div>
-<div class="item">📞 الهاتف: —</div>
 
+<div class="item">💺 المقعد: <span id="seat"></span></div>
+<div class="item">👤 الاسم: <span id="name"></span></div>
+<div class="item">📞 الهاتف: <span id="phone"></span></div>
 <a href="payment.html">
 <button>الانتقال إلى الدفع</button>
 </a>
 
 </div>
-
+<script>
+document.getElementById("seat").innerText = localStorage.getItem("seat");
+document.getElementById("name").innerText = localStorage.getItem("name");
+document.getElementById("phone").innerText = localStorage.getItem("phone");
+</script>
 </body>
 </html>
