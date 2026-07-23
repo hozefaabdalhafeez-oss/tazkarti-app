@@ -108,15 +108,24 @@ button {
 </div>
 
 
+
 <script>
 let seats = document.querySelectorAll(".seat");
+let selectedSeat = "";
 
 seats.forEach(seat => {
     seat.onclick = function(){
-        seat.classList.toggle("selected");
+        seats.forEach(s => s.classList.remove("selected"));
+        
+        seat.classList.add("selected");
+        selectedSeat = seat.innerText;
+
+        localStorage.setItem("seat", selectedSeat);
     }
 });
+
 </script>
+
 
 </body>
 </html>
