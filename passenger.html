@@ -70,13 +70,25 @@ button{
 <input type="text" placeholder="اكتب الاسم الكامل">
 
 <label>رقم الهاتف</label>
-<input type="tel" placeholder="09XXXXXXXX">
+<input id="name" type="text" placeholder="اكتب الاسم الكامل">
 
-<a href="review.html">
-<button>متابعة</button>
-</a>
+<input id="phone" type="tel" placeholder="09XXXXXXXX">
+
+<button onclick="savePassenger()">متابعة</button>
 
 </div>
+<script>
+function savePassenger(){
 
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+
+localStorage.setItem("name", name);
+localStorage.setItem("phone", phone);
+
+window.location.href = "review.html";
+
+}
+</script>
 </body>
 </html>
