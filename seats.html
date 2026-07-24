@@ -3,67 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>اختيار المقعد - تذكرتي</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
-    text-align: center;
+body{
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+    text-align:center;
+    margin:0;
 }
 
-h1 {
-    background: #0d6efd;
-    color: white;
-    padding: 20px;
-    margin: 0;
+header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    font-size:26px;
 }
 
-.bus {
-    background: white;
-    width: 320px;
-    margin: 30px auto;
-    padding: 25px;
-    border-radius: 25px;
-    box-shadow: 0 3px 10px #ccc;
+.container{
+    padding:20px;
 }
 
-.driver {
-    background: #ddd;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+.card{
+    background:white;
+    max-width:450px;
+    margin:auto;
+    padding:20px;
+    border-radius:12px;
 }
 
-.seats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+.seats{
+    display:grid;
+    grid-template-columns:repeat(4,60px);
+    gap:10px;
+    justify-content:center;
+    margin-top:20px;
 }
 
-.seat {
-    background: #198754;
-    color: white;
-    padding: 12px 5px;
-    border-radius: 8px;
-    cursor: pointer;
+.seat{
+    background:#198754;
+    color:white;
+    padding:15px 5px;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-.seat:hover {
-    background: #0d6efd;
+.seat.selected{
+    background:#dc3545;
 }
 
-.selected {
-    background: #dc3545;
-}
-
-button {
-    margin-top: 25px;
-    padding: 12px 30px;
-    background: #0d6efd;
-    color: white;
-    border: none;
-    border-radius: 10px;
+.info{
+    margin-top:20px;
+    font-size:18px;
 }
 </style>
 
@@ -71,66 +63,73 @@ button {
 
 <body>
 
-<h1>🎫 اختر مقعدك</h1>
+<header>
+🚌 تذكرتي
+</header>
 
-<div class="bus">
+<div class="container">
 
-<div class="driver">
-🚌 السائق
-</div>
+<div class="card">
+
+<h2>اختيار المقعد</h2>
+
+<p id="tripName"></p>
 
 <div class="seats">
 
-<div class="seat">1</div>
-<div class="seat">2</div>
-<div class="seat">3</div>
-<div class="seat">4</div>
+<div class="seat" onclick="selectSeat(this)">1</div>
+<div class="seat" onclick="selectSeat(this)">2</div>
+<div class="seat" onclick="selectSeat(this)">3</div>
+<div class="seat" onclick="selectSeat(this)">4</div>
 
-<div class="seat">5</div>
-<div class="seat">6</div>
-<div class="seat">7</div>
-<div class="seat">8</div>
+<div class="seat" onclick="selectSeat(this)">5</div>
+<div class="seat" onclick="selectSeat(this)">6</div>
+<div class="seat" onclick="selectSeat(this)">7</div>
+<div class="seat" onclick="selectSeat(this)">8</div>
 
-<div class="seat">9</div>
-<div class="seat">10</div>
-<div class="seat">11</div>
-<div class="seat">12</div>
-
-<div class="seat">13</div>
-<div class="seat">14</div>
-<div class="seat">15</div>
-<div class="seat">16</div>
+<div class="seat" onclick="selectSeat(this)">9</div>
+<div class="seat" onclick="selectSeat(this)">10</div>
+<div class="seat" onclick="selectSeat(this)">11</div>
+<div class="seat" onclick="selectSeat(this)">12</div>
 
 </div>
 
-<button onclick="confirmSeat()">تأكيد المقعد</button>
+<div class="info" id="seatInfo">
+لم يتم اختيار مقعد
+</div>
 
 </div>
 
+</div>
 
 
 <script>
-let seats = document.querySelectorAll(".seat");
-let selectedSeat = "";
 
-seats.forEach(seat => {
-    seat.onclick = function(){
-        seats.forEach(s => s.classList.remove("selected"));
-        
-        seat.classList.add("selected");
-        selectedSeat = seat.innerText;
+let trip = localStorage.getItem("selectedTrip");
 
-        localStorage.setItem("seat", selectedSeat);
-    }
-});
-function confirmSeat() {
-    if (selectedSeat === "") {
-        alert("يرجى اختيار مقعد أولاً");
-        return;
-    }
+if(trip){
+    document.getElementById("tripName").innerHTML =
+    "الرحلة: " + trip;
+}else{
+    document.getElementById("tripName").innerHTML =
+    "لم يتم اختيار رحلة";
+}
 
-    window.location.href = "passenger.html";
-            }
+
+function selectSeat(seat){
+
+    document.querySelectorAll(".seat")
+    .forEach(function(s){
+        s.classList.remove("selected");
+    });
+
+    seat.classList.add("selected");
+
+    document.getElementById("seatInfo").innerHTML =
+    "تم اختيار المقعد رقم: " + seat.innerHTML;
+
+}
+
 </script>
 
 
