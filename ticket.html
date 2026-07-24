@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -11,7 +9,7 @@
 
 <style>
 body{
-    font-family: Arial, sans-serif;
+    font-family:Arial,sans-serif;
     background:#f5f7fa;
     margin:0;
 }
@@ -51,6 +49,17 @@ header{
     border-radius:10px;
     font-weight:bold;
 }
+
+button{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
 </style>
 
 </head>
@@ -66,37 +75,23 @@ header{
 
 <h2>تذكرتي</h2>
 
-<div class="item">
-🎟 رقم التذكرة: TK-000001
-</div>
+<div class="item">🎟 رقم التذكرة: TK-000001</div>
 
-<div class="item">
-🚌 الشركة: الأرسنال
-</div>
+<div class="item">🚌 الشركة: <span id="company"></span></div>
 
-<div class="item">
-📍 الرحلة: <span id="trip"></span>
-</div>
+<div class="item">📍 الرحلة: <span id="trip"></span></div>
 
-<div class="item">
-💺 المقعد: <span id="seat"></span>
-</div>
+<div class="item">💺 المقعد: <span id="seat"></span></div>
 
-<div class="item">
-👤 اسم الراكب: <span id="name"></span>
-</div>
+<div class="item">👤 اسم الراكب: <span id="name"></span></div>
 
-<div class="item">
-📞 الهاتف: <span id="phone"></span>
-</div>
+<div class="item">📞 الهاتف: <span id="phone"></span></div>
 
-<div class="item">
-💳 رقم العملية: <span id="transaction"></span>
-</div>
+<div class="item">⏰ موعد التحرك: <span id="time"></span></div>
 
-<div class="item">
-📅 موعد الرحلة: يحدد لاحقًا
-</div>
+<div class="item">💰 السعر: <span id="price"></span></div>
+
+<div class="item">💳 رقم العملية: <span id="transaction"></span></div>
 
 
 <div class="status">
@@ -104,15 +99,24 @@ header{
 </div>
 
 
-<button onclick="history.back()" style="width:100%; margin-top:15px;">
+<button onclick="history.back()">
 ⬅️ رجوع
-</button> 
+</button>
+
+
+</div>
+
+
 <script>
+
+document.getElementById("company").innerText =
+localStorage.getItem("company");
 
 let from = localStorage.getItem("from");
 let to = localStorage.getItem("to");
 
-document.getElementById("trip").innerText = from + " → " + to;
+document.getElementById("trip").innerText =
+from + " → " + to;
 
 document.getElementById("seat").innerText =
 localStorage.getItem("seat");
@@ -122,6 +126,12 @@ localStorage.getItem("name");
 
 document.getElementById("phone").innerText =
 localStorage.getItem("phone");
+
+document.getElementById("time").innerText =
+localStorage.getItem("time");
+
+document.getElementById("price").innerText =
+localStorage.getItem("price");
 
 document.getElementById("transaction").innerText =
 localStorage.getItem("transaction");
