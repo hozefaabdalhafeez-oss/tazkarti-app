@@ -68,9 +68,7 @@ button{
 
 <h2>بيانات الراكب</h2>
 
-
 <div class="info" id="bookingInfo"></div>
-
 
 <input id="name" type="text" placeholder="اسم الراكب">
 
@@ -92,8 +90,8 @@ let seat = localStorage.getItem("selectedSeat");
 
 
 document.getElementById("bookingInfo").innerHTML =
-"الرحلة: " + (trip || "") +
-"<br>المقعد: " + (seat || "");
+"الرحلة: " + (trip || "غير محددة") +
+"<br>المقعد: " + (seat || "غير محدد");
 
 
 
@@ -116,7 +114,7 @@ localStorage.setItem("passengerName", name);
 localStorage.setItem("passengerPhone", phone);
 
 
-alert("تم حفظ بيانات الراكب");
+window.location.href = "review.html";
 
 }
 
