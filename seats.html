@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -18,17 +19,13 @@ header{
     background:#0d6efd;
     color:white;
     padding:20px;
-    font-size:26px;
-}
-
-.container{
-    padding:20px;
+    font-size:28px;
 }
 
 .card{
     background:white;
     max-width:450px;
-    margin:auto;
+    margin:30px auto;
     padding:20px;
     border-radius:12px;
 }
@@ -53,7 +50,7 @@ header{
     background:#dc3545;
 }
 
-.info{
+#info{
     margin-top:20px;
     font-size:18px;
 }
@@ -67,7 +64,6 @@ header{
 🚌 تذكرتي
 </header>
 
-<div class="container">
 
 <div class="card">
 
@@ -75,30 +71,31 @@ header{
 
 <p id="tripName"></p>
 
+
 <div class="seats">
 
-<div class="seat" onclick="selectSeat(this)">1</div>
-<div class="seat" onclick="selectSeat(this)">2</div>
-<div class="seat" onclick="selectSeat(this)">3</div>
-<div class="seat" onclick="selectSeat(this)">4</div>
+<div class="seat" onclick="chooseSeat(this)">1</div>
+<div class="seat" onclick="chooseSeat(this)">2</div>
+<div class="seat" onclick="chooseSeat(this)">3</div>
+<div class="seat" onclick="chooseSeat(this)">4</div>
 
-<div class="seat" onclick="selectSeat(this)">5</div>
-<div class="seat" onclick="selectSeat(this)">6</div>
-<div class="seat" onclick="selectSeat(this)">7</div>
-<div class="seat" onclick="selectSeat(this)">8</div>
+<div class="seat" onclick="chooseSeat(this)">5</div>
+<div class="seat" onclick="chooseSeat(this)">6</div>
+<div class="seat" onclick="chooseSeat(this)">7</div>
+<div class="seat" onclick="chooseSeat(this)">8</div>
 
-<div class="seat" onclick="selectSeat(this)">9</div>
-<div class="seat" onclick="selectSeat(this)">10</div>
-<div class="seat" onclick="selectSeat(this)">11</div>
-<div class="seat" onclick="selectSeat(this)">12</div>
+<div class="seat" onclick="chooseSeat(this)">9</div>
+<div class="seat" onclick="chooseSeat(this)">10</div>
+<div class="seat" onclick="chooseSeat(this)">11</div>
+<div class="seat" onclick="chooseSeat(this)">12</div>
 
 </div>
 
-<div class="info" id="seatInfo">
+
+<p id="info">
 لم يتم اختيار مقعد
-</div>
+</p>
 
-</div>
 
 </div>
 
@@ -108,25 +105,32 @@ header{
 let trip = localStorage.getItem("selectedTrip");
 
 if(trip){
-    document.getElementById("tripName").innerHTML =
-    "الرحلة: " + trip;
+
+document.getElementById("tripName").innerHTML =
+"الرحلة: " + trip;
+
 }else{
-    document.getElementById("tripName").innerHTML =
-    "لم يتم اختيار رحلة";
+
+document.getElementById("tripName").innerHTML =
+"لم يتم اختيار رحلة";
+
 }
 
 
-function selectSeat(seat){
+function chooseSeat(seat){
 
-    document.querySelectorAll(".seat")
-    .forEach(function(s){
-        s.classList.remove("selected");
-    });
+document.querySelectorAll(".seat").forEach(function(s){
 
-    seat.classList.add("selected");
+s.classList.remove("selected");
 
-    document.getElementById("seatInfo").innerHTML =
-    "تم اختيار المقعد رقم: " + seat.innerHTML;
+});
+
+
+seat.classList.add("selected");
+
+
+document.getElementById("info").innerHTML =
+"تم اختيار المقعد رقم: " + seat.innerHTML;
 
 }
 
