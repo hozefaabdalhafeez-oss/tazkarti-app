@@ -21,13 +21,16 @@ header{
     font-size:28px;
 }
 
-.container{
+.card{
+    background:white;
+    max-width:450px;
+    margin:30px auto;
     padding:20px;
+    border-radius:12px;
 }
 
-select, button{
+select,button{
     width:90%;
-    max-width:400px;
     padding:15px;
     margin:10px;
     font-size:18px;
@@ -38,19 +41,10 @@ button{
     background:#0d6efd;
     color:white;
     border:none;
-    cursor:pointer;
 }
 
 button:disabled{
     background:#999;
-}
-
-.card{
-    background:white;
-    margin:20px auto;
-    padding:20px;
-    border-radius:12px;
-    max-width:450px;
 }
 </style>
 
@@ -59,10 +53,9 @@ button:disabled{
 <body>
 
 <header>
-تذكرتي 🚌
+🚌 تذكرتي
 </header>
 
-<div class="container">
 
 <div class="card">
 
@@ -79,14 +72,14 @@ button:disabled{
 </select>
 
 
-<button id="seatBtn" onclick="chooseSeat()">
+<br>
+
+<button id="seatBtn" disabled>
 اختر المقعد
 </button>
 
 
 <p id="message"></p>
-
-</div>
 
 </div>
 
@@ -98,36 +91,36 @@ let seatBtn = document.getElementById("seatBtn");
 let message = document.getElementById("message");
 
 
-seatBtn.disabled = true;
-
-
 trip.addEventListener("change", function(){
 
-    if(trip.value !== ""){
-        seatBtn.disabled = false;
-        message.innerHTML = "تم اختيار الرحلة: " + trip.value;
-    }
-    else{
-        seatBtn.disabled = true;
-        message.innerHTML = "";
-    }
+if(trip.value !== ""){
+
+seatBtn.disabled = false;
+
+message.innerHTML =
+"تم اختيار الرحلة: " + trip.value;
+
+}else{
+
+seatBtn.disabled = true;
+
+message.innerHTML = "";
+
+}
 
 });
 
 
-function chooseSeat(){
+seatBtn.onclick = function(){
 
-    if(trip.value === ""){
-        alert("اختر الرحلة أولاً");
-        return;
-    }
+localStorage.setItem("selectedTrip", trip.value);
 
-    alert("سيتم الانتقال لاختيار المقعد للرحلة: " + trip.value);
+window.location.href = "seats.html";
 
-}
+};
+
 
 </script>
-
 
 </body>
 </html>
