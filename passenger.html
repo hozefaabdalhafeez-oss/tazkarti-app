@@ -74,11 +74,21 @@ button{
 <button onclick="savePassenger()">متابعة</button>
 
 </div>
-<script>
-function savePassenger(){
+<script
+    function savePassenger(){
 
-let name = document.getElementById("name").value;
-let phone = document.getElementById("phone").value;
+let name = document.getElementById("name").value.trim();
+let phone = document.getElementById("phone").value.trim();
+
+if(name === ""){
+    alert("يرجى إدخال الاسم الكامل");
+    return;
+}
+
+if(phone === ""){
+    alert("يرجى إدخال رقم الهاتف");
+    return;
+}
 
 localStorage.setItem("name", name);
 localStorage.setItem("phone", phone);
