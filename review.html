@@ -82,28 +82,35 @@ button{
 <script>
 
 document.getElementById("company").innerText =
-localStorage.getItem("company");
+localStorage.getItem("company") || "غير محددة";
 
-let from = localStorage.getItem("from");
-let to = localStorage.getItem("to");
+
+let from = localStorage.getItem("from") || "";
+let to = localStorage.getItem("to") || "";
+
 
 document.getElementById("trip").innerText =
 from + " → " + to;
 
+
 document.getElementById("seat").innerText =
-localStorage.getItem("seat");
+localStorage.getItem("selectedSeat") || "غير محدد";
+
 
 document.getElementById("name").innerText =
-localStorage.getItem("name");
+localStorage.getItem("passengerName") || "غير محدد";
+
 
 document.getElementById("phone").innerText =
-localStorage.getItem("phone");
+localStorage.getItem("passengerPhone") || "غير محدد";
+
 
 document.getElementById("time").innerText =
-localStorage.getItem("time");
+localStorage.getItem("time") || "غير محدد";
+
 
 document.getElementById("price").innerText =
-localStorage.getItem("price");
+localStorage.getItem("price") || "غير محدد";
 
 </script>
 
