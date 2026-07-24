@@ -81,11 +81,13 @@ button:disabled{
 🚌 تذكرتي
 </header>
 
+
 <div class="card">
 
 <h2>اختيار المقعد</h2>
 
 <p id="tripName"></p>
+
 
 <div class="bus">
 
@@ -138,19 +140,17 @@ document.getElementById("tripName").innerHTML =
 function chooseSeat(seat){
 
 document.querySelectorAll(".seat").forEach(function(s){
-    s.classList.remove("selected");
+s.classList.remove("selected");
 });
-
 
 seat.classList.add("selected");
 
-
 selectedSeat = seat.innerHTML;
 
+localStorage.setItem("selectedSeat", selectedSeat);
 
 document.getElementById("info").innerHTML =
 "تم اختيار المقعد رقم: " + selectedSeat;
-
 
 document.getElementById("nextBtn").disabled = false;
 
@@ -160,15 +160,9 @@ document.getElementById("nextBtn").disabled = false;
 
 function continueBooking(){
 
-localStorage.setItem("selectedSeat", selectedSeat);
-
-
-alert(
-"تم حفظ المقعد رقم: " + selectedSeat
-);
+window.location.href = "passenger.html";
 
 }
-
 
 </script>
 
