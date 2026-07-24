@@ -67,26 +67,23 @@ input, select {
 
 <div class="card">
 <h2>ابحث عن رحلة</h2>
-
 <label>من</label>
-<select>
+<select id="from">
+
 <option>الخرطوم</option>
 <option>عطبرة</option>
 <option>بورتسودان</option>
 <option>مدني</option>
 </select>
-
 <label>إلى</label>
-<select>
+<select id="to">
+
 <option>دنقلا</option>
 <option>كسلا</option>
 <option>شندي</option>
 <option>مروي</option>
 </select>
-
-<a href="seats.html">
-<button>اختيار المقعد</button>
-</a>
+<button onclick="goToSeats()">اختيار المقعد</button>
 
 </div>
 
@@ -97,6 +94,16 @@ input, select {
 </div>
 
 </div>
+<script>
+function goToSeats() {
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
 
+    localStorage.setItem("from", from);
+    localStorage.setItem("to", to);
+
+    window.location.href = "seats.html";
+}
+</script>
 </body>
 </html>
