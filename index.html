@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>تذكرتي</title>
 
 <style>
@@ -25,32 +27,39 @@ header {
 }
 
 .container {
-    padding: 20px;
+    padding:20px;
 }
 
 .card {
-    background: white;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 10px #ccc;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 3px 10px #ccc;
+}
+
+label {
+    display:block;
+    margin-top:10px;
+    font-weight:bold;
+}
+
+select {
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+    border-radius:8px;
+    border:1px solid #ccc;
 }
 
 button {
-    background: #0d6efd;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    font-size: 16px;
-}
-
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    font-size:16px;
+    width:100%;
 }
 </style>
 
@@ -59,51 +68,128 @@ input, select {
 <body>
 
 <header>
-    <div class="logo">🎫 تذكرتي</div>
-    <p>احجز تذكرتك بسهولة</p>
+<div class="logo">🎫 تذكرتي</div>
+<p>احجز تذكرتك بسهولة</p>
 </header>
+
 
 <div class="container">
 
 <div class="card">
+
 <h2>ابحث عن رحلة</h2>
+
+
+<label>شركة السفر</label>
+
+<select id="company">
+<option>الأرسنال</option>
+<option>الرفاعي</option>
+<option>الجودة</option>
+<option>الأصيل</option>
+</select>
+
+
 <label>من</label>
+
 <select id="from">
 
 <option>الخرطوم</option>
+<option>كسلا</option>
 <option>عطبرة</option>
 <option>بورتسودان</option>
-<option>مدني</option>
+
 </select>
+
+
 <label>إلى</label>
+
 <select id="to">
 
 <option>دنقلا</option>
-<option>كسلا</option>
-<option>شندي</option>
 <option>مروي</option>
+<option>شندي</option>
+<option>كسلا</option>
+
 </select>
-<button onclick="goToSeats()">اختيار المقعد</button>
+
+
+<label>موعد التحرك</label>
+
+<select id="time">
+
+<option>5:30 صباحًا</option>
+
+</select>
+
+
+<label>السعر</label>
+
+<select id="price">
+
+<option>175</option>
+
+</select>
+
+
+<button onclick="goToSeats()">
+اختيار المقعد
+</button>
+
 
 </div>
+
 
 <div class="card">
+
 <h2>رحلات مميزة</h2>
+
 <p>🚌 الخرطوم → دنقلا</p>
+
 <p>🚌 الخرطوم → بورتسودان</p>
-</div>
 
 </div>
+
+
+</div>
+
+
 <script>
-function goToSeats() {
-    const from = document.getElementById("from").value;
-    const to = document.getElementById("to").value;
 
-    localStorage.setItem("from", from);
-    localStorage.setItem("to", to);
+function goToSeats(){
 
-    window.location.href = "seats.html";
+localStorage.setItem(
+"company",
+document.getElementById("company").value
+);
+
+localStorage.setItem(
+"from",
+document.getElementById("from").value
+);
+
+localStorage.setItem(
+"to",
+document.getElementById("to").value
+);
+
+localStorage.setItem(
+"time",
+document.getElementById("time").value
+);
+
+localStorage.setItem(
+"price",
+document.getElementById("price").value
+);
+
+
+window.location.href="seats.html";
+
 }
+
 </script>
+
+
 </body>
 </html>
