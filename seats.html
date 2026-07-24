@@ -19,20 +19,20 @@ header{
     background:#0d6efd;
     color:white;
     padding:20px;
-    font-size:28px;
+    font-size:26px;
 }
 
 .card{
     background:white;
     max-width:450px;
-    margin:30px auto;
+    margin:20px auto;
     padding:20px;
     border-radius:12px;
 }
 
-.seats{
+.bus{
     display:grid;
-    grid-template-columns:repeat(4,60px);
+    grid-template-columns:60px 40px 60px;
     gap:10px;
     justify-content:center;
     margin-top:20px;
@@ -50,9 +50,27 @@ header{
     background:#dc3545;
 }
 
-#info{
+.empty{
+    width:40px;
+}
+
+button{
     margin-top:20px;
+    width:90%;
+    padding:15px;
     font-size:18px;
+    border:none;
+    border-radius:8px;
+    background:#0d6efd;
+    color:white;
+}
+
+button:disabled{
+    background:#999;
+}
+
+#info{
+    margin-top:15px;
 }
 </style>
 
@@ -64,38 +82,41 @@ header{
 🚌 تذكرتي
 </header>
 
-
 <div class="card">
 
 <h2>اختيار المقعد</h2>
 
 <p id="tripName"></p>
 
-
-<div class="seats">
+<div class="bus">
 
 <div class="seat" onclick="chooseSeat(this)">1</div>
+<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">2</div>
+
 <div class="seat" onclick="chooseSeat(this)">3</div>
+<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">4</div>
 
 <div class="seat" onclick="chooseSeat(this)">5</div>
+<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">6</div>
+
 <div class="seat" onclick="chooseSeat(this)">7</div>
+<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">8</div>
 
 <div class="seat" onclick="chooseSeat(this)">9</div>
+<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">10</div>
-<div class="seat" onclick="chooseSeat(this)">11</div>
-<div class="seat" onclick="chooseSeat(this)">12</div>
 
 </div>
 
+<p id="info">لم يتم اختيار مقعد</p>
 
-<p id="info">
-لم يتم اختيار مقعد
-</p>
-
+<button id="nextBtn" disabled>
+متابعة
+</button>
 
 </div>
 
@@ -103,39 +124,32 @@ header{
 <script>
 
 let trip = localStorage.getItem("selectedTrip");
-
-if(trip){
-
-document.getElementById("tripName").innerHTML =
-"الرحلة: " + trip;
-
-}else{
+let selectedSeat = "";
 
 document.getElementById("tripName").innerHTML =
-"لم يتم اختيار رحلة";
-
-}
+"الرحلة: " + (trip || "غير محددة");
 
 
 function chooseSeat(seat){
 
 document.querySelectorAll(".seat").forEach(function(s){
-
 s.classList.remove("selected");
-
 });
-
 
 seat.classList.add("selected");
 
+selectedSeat = seat.innerHTML;
+
+localStorage.setItem("selectedSeat", selectedSeat);
 
 document.getElementById("info").innerHTML =
-"تم اختيار المقعد رقم: " + seat.innerHTML;
+"تم اختيار المقعد رقم: " + selectedSeat;
+
+document.getElementById("nextBtn").disabled = false;
 
 }
 
 </script>
-
 
 </body>
 </html>
