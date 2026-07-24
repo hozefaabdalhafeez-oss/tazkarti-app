@@ -79,13 +79,26 @@ button{
 </div>
 
 <label>رقم العملية</label>
-<input type="text" placeholder="أدخل رقم العملية">
 
-<a href="ticket.html">
-<button>تأكيد الدفع</button>
-</a>
+<input id="transaction" type="text" placeholder="أدخل رقم العملية">
+<button onclick="confirmPayment()">تأكيد الدفع</button>
 
 </div>
+<script>
+function confirmPayment(){
 
+let transaction = document.getElementById("transaction").value.trim();
+
+if(transaction === ""){
+    alert("يرجى إدخال رقم العملية");
+    return;
+}
+
+localStorage.setItem("transaction", transaction);
+
+window.location.href = "ticket.html";
+
+}
+</script>
 </body>
 </html>
