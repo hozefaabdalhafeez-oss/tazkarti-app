@@ -1,67 +1,53 @@
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>تذكرتي</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
+body{
+    font-family: Arial;
     background:#f5f7fa;
+    text-align:center;
     margin:0;
 }
 
-header {
+header{
     background:#0d6efd;
     color:white;
-    padding:25px;
-    text-align:center;
-}
-
-.logo {
-    font-size:35px;
-    font-weight:bold;
-}
-
-.container {
     padding:20px;
+    font-size:28px;
 }
 
-.card {
+.box{
     background:white;
-    border-radius:15px;
+    margin:20px;
     padding:20px;
-    margin-bottom:15px;
-    box-shadow:0 3px 10px #ccc;
+    border-radius:15px;
 }
 
-label {
-    display:block;
-    margin-top:10px;
-    font-weight:bold;
+.trip{
+    border:2px solid #ddd;
+    padding:15px;
+    margin:10px;
+    border-radius:10px;
+    cursor:pointer;
 }
 
-select {
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border-radius:8px;
-    border:1px solid #ccc;
+.trip.selected{
+    border-color:#0d6efd;
+    background:#e7f0ff;
 }
 
-button {
+button{
     background:#0d6efd;
     color:white;
     border:none;
-    padding:12px;
+    padding:15px 30px;
     border-radius:10px;
-    width:100%;
-    font-size:16px;
+    font-size:18px;
+    cursor:pointer;
 }
 </style>
 
@@ -70,207 +56,78 @@ button {
 <body>
 
 <header>
-<div class="logo">🎫 تذكرتي</div>
-<p>احجز تذكرتك بسهولة</p>
+تذكرتي 🚌
 </header>
 
-<div class="container">
+<div class="box">
 
-<div class="card">
+<h2>اختر الرحلة</h2>
 
-<h2>ابحث عن رحلة</h2>
+<div class="trip" onclick="selectTrip(this,'الخرطوم - دنقلا')">
+الخرطوم → دنقلا
+<br>
+التحرك 5:30 صباحاً
+</div>
 
-<label>شركة السفر</label>
+<div class="trip" onclick="selectTrip(this,'الخرطوم - عطبرة')">
+الخرطوم → عطبرة
+<br>
+التحرك 5:30 صباحاً
+</div>
 
-<select id="company">
-<option>الأرسنال</option>
-<option>الرفاعي</option>
-<option>الجودة</option>
-</select>
-<label>من</label>
+<div class="trip" onclick="selectTrip(this,'الخرطوم - بورتسودان')">
+الخرطوم → بورتسودان
+<br>
+التحرك 5:30 صباحاً
+</div>
 
-<select id="from">
-<option>الخرطوم</option>
-<option>كسلا</option>
-<option>القضارف</option>
-<option>عطبرة</option>
-<option>بورتسودان</option>
-<option>مدني</option>
-</select>
+<br>
 
-
-<label>إلى</label>
-
-
-
-<select id="to">
-<option>دنقلا</option>
-<option>الخرطوم</option>
-<option>بورتسودان</option>
-<option>كسلا</option>
-<option>شندي</option>
-<option>عطبرة</option>
-</select>
-<label>موعد التحرك</label>
-
-<select id="time">
-<option>اختر الرحلة أولاً</option>
-</select>
-
-
-<label>السعر</label>
-
-<select id="price">
-<option>اختر الرحلة أولاً</option>
-</select>
-
-
-<button onclick="goToSeats()">
-اختيار المقعد
+<button onclick="goNext()">
+اختر المقعد
 </button>
 
-
 </div>
 
 
-<div class="card">
-
-<h2>رحلات مميزة</h2>
-
-<p>🚌 الخرطوم → دنقلا</p>
-<p>🚌 الخرطوم → بورتسودان</p>
-<p>🚌 كسلا → الخرطوم</p>
-
-</div>
-
-</div>
 <script>
 
+let selectedTrip = "";
 
+function selectTrip(element, trip){
 
-    
-        const trips = [
+    selectedTrip = trip;
 
+    let trips = document.querySelectorAll(".trip");
 
-company:"الأرسنال",
-from:"كسلا",
-to:"عطبرة",
-time:"5:30 صباحًا",
-price:"138"
-},
+    trips.forEach(function(item){
+        item.classList.remove("selected");
+    });
 
-{
-company:"الأرسنال",
-from:"كسلا",
-to:"بورتسودان",
-time:"5:30 صباحًا",
-price:"138"
-},
-
-{
-company:"الأرسنال",
-from:"عطبرة",
-to:"كسلا",
-time:"5:30 صباحًا",
-price:"138"
-},
-
-{
-company:"الأرسنال",
-from:"بورتسودان",
-to:"كسلا",
-time:"5:30 صباحًا",
-price:"138"
-}
-
-]; 
-
-
-function updateTrip(){
-
-let company =
-document.getElementById("company").value;
-
-let from =
-document.getElementById("from").value;
-
-let to =
-document.getElementById("to").value;
-
-
-let trip = trips.find(t =>
-t.company === company &&
-t.from === from &&
-t.to === to
-);
-
-
-if(trip){
-
-document.getElementById("time").innerHTML =
-"<option>"+trip.time+"</option>";
-
-document.getElementById("price").innerHTML =
-"<option>"+trip.price+"</option>";
-
-}else{
-
-document.getElementById("time").innerHTML =
-"<option>لا توجد رحلة</option>";
-
-document.getElementById("price").innerHTML =
-"<option>لا يوجد سعر</option>";
-
-}
+    element.classList.add("selected");
 
 }
 
 
-document.getElementById("company")
-.onchange = updateTrip;
+function goNext(){
 
-document.getElementById("from")
-.onchange = updateTrip;
+    if(selectedTrip === ""){
 
-document.getElementById("to")
-.onchange = updateTrip;
-updateTrip();
+        alert("اختر الرحلة أولاً");
 
+    }else{
 
-function goToSeats(){
+        alert("تم اختيار: " + selectedTrip);
 
-localStorage.setItem(
-"company",
-document.getElementById("company").value
-);
+        // لاحقاً نضع هنا الانتقال لصفحة المقاعد
+        // window.location.href="seats.html";
 
-localStorage.setItem(
-"from",
-document.getElementById("from").value
-);
-
-localStorage.setItem(
-"to",
-document.getElementById("to").value
-);
-
-localStorage.setItem(
-"time",
-document.getElementById("time").value
-);
-
-localStorage.setItem(
-"price",
-document.getElementById("price").value
-);
-
-
-window.location.href="seats.html";
+    }
 
 }
 
 </script>
 
-
 </body>
 </html>
+
