@@ -103,7 +103,7 @@ button {
 
 </div>
 
-<button>تأكيد المقعد</button>
+<button onclick="confirmSeat()">تأكيد المقعد</button>
 
 </div>
 
@@ -123,7 +123,14 @@ seats.forEach(seat => {
         localStorage.setItem("seat", selectedSeat);
     }
 });
+function confirmSeat() {
+    if (selectedSeat === "") {
+        alert("يرجى اختيار مقعد أولاً");
+        return;
+    }
 
+    window.location.href = "passenger.html";
+            }
 </script>
 
 
