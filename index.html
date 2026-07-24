@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -84,35 +86,16 @@ button {
 <option>الأرسنال</option>
 <option>الرفاعي</option>
 <option>الجودة</option>
-<option>الأصيل</option>
-<option>حدباي</option>
-<option>بختان</option>
-<option>أبو نخيلة</option>
-<option>عرجون</option>
-<option>فخر السودان</option>
-<option>أنهار</option>
-<option>العقيدة</option>
-<option>ود سطيح</option>
-<option>الحرمين</option>
-<option>رويال</option>
-<option>نفحات</option>
-<option>جسكابو</option>
-<option>شريان</option>
-<option>العزيزية</option>
-<option>عبدونتود</option>
 </select>
 <label>من</label>
 
 <select id="from">
 <option>الخرطوم</option>
 <option>كسلا</option>
+<option>القضارف</option>
 <option>عطبرة</option>
 <option>بورتسودان</option>
-<option>القضارف</option>
 <option>مدني</option>
-<option>شندي</option>
-<option>دنقلا</option>
-<option>مروي</option>
 </select>
 
 
@@ -120,27 +103,24 @@ button {
 
 <select id="to">
 <option>دنقلا</option>
-<option>مروي</option>
-<option>شندي</option>
-<option>كسلا</option>
-<option>بورتسودان</option>
-<option>القضارف</option>
-<option>مدني</option>
 <option>الخرطوم</option>
+<option>بورتسودان</option>
+<option>كسلا</option>
+<option>شندي</option>
 </select>
 
 
 <label>موعد التحرك</label>
 
 <select id="time">
-<option>5:30 صباحًا</option>
+<option>اختر الرحلة أولاً</option>
 </select>
 
 
 <label>السعر</label>
 
 <select id="price">
-<option>175</option>
+<option>اختر الرحلة أولاً</option>
 </select>
 
 
@@ -162,7 +142,88 @@ button {
 
 </div>
 
-    <script>
+</div>
+<script>
+
+const trips = [
+
+{
+company:"الأرسنال",
+from:"الخرطوم",
+to:"دنقلا",
+time:"5:30 صباحًا",
+price:"175"
+},
+
+{
+company:"الأرسنال",
+from:"الخرطوم",
+to:"بورتسودان",
+time:"5:30 صباحًا",
+price:"160"
+},
+
+{
+company:"الرفاعي",
+from:"كسلا",
+to:"الخرطوم",
+time:"5:30 صباحًا",
+price:"175"
+},
+
+{
+company:"الجودة",
+from:"القضارف",
+to:"الخرطوم",
+time:"5:30 صباحًا",
+price:"105"
+}
+
+];
+
+
+function updateTrip(){
+
+let company =
+document.getElementById("company").value;
+
+let from =
+document.getElementById("from").value;
+
+let to =
+document.getElementById("to").value;
+
+
+let trip = trips.find(t =>
+t.company === company &&
+t.from === from &&
+t.to === to
+);
+
+
+if(trip){
+
+document.getElementById("time").innerHTML =
+"<option>"+trip.time+"</option>";
+
+document.getElementById("price").innerHTML =
+"<option>"+trip.price+"</option>";
+
+}
+
+}
+
+
+document.getElementById("company")
+.onchange = updateTrip;
+
+document.getElementById("from")
+.onchange = updateTrip;
+
+document.getElementById("to")
+.onchange = updateTrip;
+
+
 
 function goToSeats(){
 
@@ -201,4 +262,3 @@ window.location.href="seats.html";
 
 </body>
 </html>
-
