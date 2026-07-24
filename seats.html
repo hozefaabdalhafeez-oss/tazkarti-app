@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -112,11 +111,16 @@ button:disabled{
 
 </div>
 
-<p id="info">لم يتم اختيار مقعد</p>
 
-<button id="nextBtn" disabled>
+<p id="info">
+لم يتم اختيار مقعد
+</p>
+
+
+<button id="nextBtn" disabled onclick="continueBooking()">
 متابعة
 </button>
+
 
 </div>
 
@@ -126,6 +130,7 @@ button:disabled{
 let trip = localStorage.getItem("selectedTrip");
 let selectedSeat = "";
 
+
 document.getElementById("tripName").innerHTML =
 "الرحلة: " + (trip || "غير محددة");
 
@@ -133,23 +138,40 @@ document.getElementById("tripName").innerHTML =
 function chooseSeat(seat){
 
 document.querySelectorAll(".seat").forEach(function(s){
-s.classList.remove("selected");
+    s.classList.remove("selected");
 });
+
 
 seat.classList.add("selected");
 
+
 selectedSeat = seat.innerHTML;
 
-localStorage.setItem("selectedSeat", selectedSeat);
 
 document.getElementById("info").innerHTML =
 "تم اختيار المقعد رقم: " + selectedSeat;
+
 
 document.getElementById("nextBtn").disabled = false;
 
 }
 
+
+
+function continueBooking(){
+
+localStorage.setItem("selectedSeat", selectedSeat);
+
+
+alert(
+"تم حفظ المقعد رقم: " + selectedSeat
+);
+
+}
+
+
 </script>
+
 
 </body>
 </html>
