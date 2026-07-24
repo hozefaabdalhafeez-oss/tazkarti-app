@@ -1,11 +1,12 @@
 
 
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>التذكرة الإلكترونية - تذكرتي</title>
 
 <style>
@@ -51,6 +52,7 @@ header{
     font-weight:bold;
 }
 </style>
+
 </head>
 
 <body>
@@ -59,28 +61,72 @@ header{
 <h1>🎫 التذكرة الإلكترونية</h1>
 </header>
 
+
 <div class="ticket">
 
 <h2>تذكرتي</h2>
 
-<div class="item">🎟 رقم التذكرة: TK-000001</div>
-<div class="item">🚌 الشركة: الأرسنال</div>
-<div class="item">📍 الرحلة: الخرطوم → دنقلا</div>
- <div class="item">💺 المقعد: <span id="seat"></span></div>
-<div class="item">👤 اسم الراكب: <span id="name"></span></div>
-<div class="item">📞 الهاتف: <span id="phone"></span></div>
-<div class="item">📅 موعد الرحلة: يحدد لاحقًا</div>
+<div class="item">
+🎟 رقم التذكرة: TK-000001
+</div>
+
+<div class="item">
+🚌 الشركة: الأرسنال
+</div>
+
+<div class="item">
+📍 الرحلة: <span id="trip"></span>
+</div>
+
+<div class="item">
+💺 المقعد: <span id="seat"></span>
+</div>
+
+<div class="item">
+👤 اسم الراكب: <span id="name"></span>
+</div>
+
+<div class="item">
+📞 الهاتف: <span id="phone"></span>
+</div>
+
+<div class="item">
+💳 رقم العملية: <span id="transaction"></span>
+</div>
+
+<div class="item">
+📅 موعد الرحلة: يحدد لاحقًا
+</div>
+
 
 <div class="status">
 ✅ التذكرة صالحة للسفر
 </div>
 
 </div>
+
+
 <script>
-document.getElementById("seat").innerText = localStorage.getItem("seat");
-document.getElementById("name").innerText = localStorage.getItem("name");
-document.getElementById("phone").innerText = localStorage.getItem("phone");
+
+let from = localStorage.getItem("from");
+let to = localStorage.getItem("to");
+
+document.getElementById("trip").innerText = from + " → " + to;
+
+document.getElementById("seat").innerText =
+localStorage.getItem("seat");
+
+document.getElementById("name").innerText =
+localStorage.getItem("name");
+
+document.getElementById("phone").innerText =
+localStorage.getItem("phone");
+
+document.getElementById("transaction").innerText =
+localStorage.getItem("transaction");
+
 </script>
-    
+
+
 </body>
 </html>
