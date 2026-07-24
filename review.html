@@ -56,7 +56,7 @@ button{
 
 <div class="container">
 
-<div class="item">🚌 الرحلة: الخرطوم → دنقلا</div>
+<div class="item">🚌 الرحلة: <span id="trip"></span></div>
 
 <div class="item">💺 المقعد: <span id="seat"></span></div>
 <div class="item">👤 الاسم: <span id="name"></span></div>
@@ -67,6 +67,10 @@ button{
 
 </div>
 <script>
+let from = localStorage.getItem("from");
+let to = localStorage.getItem("to");
+
+document.getElementById("trip").innerText = from + " → " + to;
 document.getElementById("seat").innerText = localStorage.getItem("seat");
 document.getElementById("name").innerText = localStorage.getItem("name");
 document.getElementById("phone").innerText = localStorage.getItem("phone");
