@@ -101,15 +101,16 @@ button {
 
 <label>إلى</label>
 
+
+
 <select id="to">
 <option>دنقلا</option>
 <option>الخرطوم</option>
 <option>بورتسودان</option>
 <option>كسلا</option>
 <option>شندي</option>
+<option>عطبرة</option>
 </select>
-
-
 <label>موعد التحرك</label>
 
 <select id="time">
@@ -225,7 +226,7 @@ document.getElementById("from")
 
 document.getElementById("to")
 .onchange = updateTrip;
-
+updateTrip();
 
 
 function goToSeats(){
