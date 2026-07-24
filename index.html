@@ -1,2 +1,133 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تذكرتي</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f7fa;
+    text-align:center;
+    margin:0;
+}
+
+header{
+    background:#0d6efd;
+    color:white;
+    padding:20px;
+    font-size:28px;
+}
+
+.container{
+    padding:20px;
+}
+
+select, button{
+    width:90%;
+    max-width:400px;
+    padding:15px;
+    margin:10px;
+    font-size:18px;
+    border-radius:8px;
+}
+
+button{
+    background:#0d6efd;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+button:disabled{
+    background:#999;
+}
+
+.card{
+    background:white;
+    margin:20px auto;
+    padding:20px;
+    border-radius:12px;
+    max-width:450px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+تذكرتي 🚌
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>احجز تذكرتك بسهولة</h2>
+
+<p>اختر الرحلة</p>
+
+<select id="trip">
+<option value="">-- اختر الرحلة --</option>
+<option value="الخرطوم - دنقلا">الخرطوم - دنقلا</option>
+<option value="الخرطوم - عطبرة">الخرطوم - عطبرة</option>
+<option value="الخرطوم - بورتسودان">الخرطوم - بورتسودان</option>
+<option value="كسلا - الخرطوم">كسلا - الخرطوم</option>
+</select>
 
 
+<button id="seatBtn" onclick="chooseSeat()">
+اختر المقعد
+</button>
+
+
+<p id="message"></p>
+
+</div>
+
+</div>
+
+
+<script>
+
+let trip = document.getElementById("trip");
+let seatBtn = document.getElementById("seatBtn");
+let message = document.getElementById("message");
+
+
+seatBtn.disabled = true;
+
+
+trip.addEventListener("change", function(){
+
+    if(trip.value !== ""){
+        seatBtn.disabled = false;
+        message.innerHTML = "تم اختيار الرحلة: " + trip.value;
+    }
+    else{
+        seatBtn.disabled = true;
+        message.innerHTML = "";
+    }
+
+});
+
+
+function chooseSeat(){
+
+    if(trip.value === ""){
+        alert("اختر الرحلة أولاً");
+        return;
+    }
+
+    alert("سيتم الانتقال لاختيار المقعد للرحلة: " + trip.value);
+
+}
+
+</script>
+
+
+</body>
+</html>
