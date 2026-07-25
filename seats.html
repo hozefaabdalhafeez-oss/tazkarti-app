@@ -81,13 +81,11 @@ button:disabled{
 🚌 تذكرتي
 </header>
 
-
 <div class="card">
 
 <h2>اختيار المقعد</h2>
 
 <p id="tripName"></p>
-
 
 <div class="bus">
 
@@ -113,29 +111,23 @@ button:disabled{
 
 </div>
 
-
 <p id="info">
 لم يتم اختيار مقعد
 </p>
-
 
 <button id="nextBtn" disabled onclick="continueBooking()">
 متابعة
 </button>
 
-
 </div>
-
 
 <script>
 
 let trip = localStorage.getItem("selectedTrip");
 let selectedSeat = "";
 
-
 document.getElementById("tripName").innerHTML =
 "الرحلة: " + (trip || "غير محددة");
-
 
 function chooseSeat(seat){
 
@@ -156,16 +148,15 @@ document.getElementById("nextBtn").disabled = false;
 
 }
 
-
-
 function continueBooking(){
+
+alert("الزر يعمل");
 
 window.location.href = "passenger.html";
 
 }
 
 </script>
-
 
 </body>
 </html>
