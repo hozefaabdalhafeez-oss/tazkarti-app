@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -16,6 +15,7 @@ body{
     background:#f5f7fa;
 }
 
+
 /* الهيدر */
 
 header{
@@ -25,6 +25,7 @@ header{
     padding:30px 20px;
     box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
+
 
 .logo{
     width:100px;
@@ -36,8 +37,8 @@ header{
     align-items:center;
     justify-content:center;
     overflow:hidden;
-    box-shadow:0 5px 15px rgba(0,0,0,.25);
 }
+
 
 .logo img{
     width:100%;
@@ -45,10 +46,12 @@ header{
     object-fit:contain;
 }
 
+
 header h1{
     margin:15px 0 5px;
     font-size:34px;
 }
+
 
 header p{
     margin:0;
@@ -56,7 +59,8 @@ header p{
 }
 
 
-/* بطاقة الحجز */
+
+/* البطاقة */
 
 .card{
 
@@ -73,17 +77,17 @@ header p{
 
 h2{
 
-    color:#0d6efd;
-    margin-top:0;
     text-align:center;
+    color:#0d6efd;
 
 }
 
 
-.card p{
+label{
 
-    text-align:center;
-    color:#555;
+    display:block;
+    margin-top:20px;
+    font-weight:bold;
 
 }
 
@@ -92,63 +96,44 @@ select{
 
     width:100%;
     padding:15px;
-    font-size:18px;
-    border:1px solid #ccc;
+    margin-top:10px;
     border-radius:12px;
-    margin-top:15px;
-    background:white;
+    border:1px solid #ccc;
+    font-size:18px;
 
 }
+
 
 
 button{
 
     width:100%;
     padding:16px;
-    margin-top:20px;
-    font-size:18px;
-    border:none;
-    border-radius:12px;
+    margin-top:25px;
     background:#0d6efd;
     color:white;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
     cursor:pointer;
-    transition:.3s;
 
 }
 
-
-button:hover{
-
-    background:#084298;
-
-}
 
 
 button:disabled{
 
-    background:#aaa;
-    cursor:not-allowed;
+    background:#999;
 
 }
 
 
-#message{
-
-    margin-top:20px;
-    color:#198754;
-    font-weight:bold;
-
-}
-
-
-/* الفوتر */
 
 footer{
 
     text-align:center;
     color:#777;
-    margin:40px 0 20px;
-    font-size:14px;
+    margin:40px 0;
 
 }
 
@@ -163,18 +148,13 @@ footer{
 
 <header>
 
-
 <div class="logo">
-
 <img src="logo.png" alt="شعار تذكرتي">
-
 </div>
-
 
 <h1>تذكرتي</h1>
 
 <p>احجز تذكرتك بسهولة وأمان</p>
-
 
 </header>
 
@@ -183,50 +163,64 @@ footer{
 <div class="card">
 
 
-<h2>ابدأ الحجز</h2>
-
-
-<p>اختر رحلتك من القائمة التالية</p>
+<h2>اختر رحلتك</h2>
 
 
 
-<select id="trip">
+<label>
+من أين؟
+</label>
 
 
-<option value="">-- اختر الرحلة --</option>
+<select id="from">
 
-<option value="الخرطوم - دنقلا">
-الخرطوم - دنقلا
+<option value="">
+-- اختر مدينة المغادرة --
 </option>
 
+<option>الخرطوم</option>
+<option>كسلا</option>
+<option>عطبرة</option>
+<option>بورتسودان</option>
+<option>مدني</option>
+<option>القضارف</option>
+<option>دنقلا</option>
 
-<option value="الخرطوم - عطبرة">
-الخرطوم - عطبرة
+</select>
+
+
+
+
+<label>
+إلى أين؟
+</label>
+
+
+<select id="to">
+
+
+<option value="">
+-- اختر مدينة الوصول --
 </option>
 
-
-<option value="الخرطوم - بورتسودان">
-الخرطوم - بورتسودان
-</option>
-
-
-<option value="كسلا - الخرطوم">
-كسلا - الخرطوم
-</option>
+<option>الخرطوم</option>
+<option>كسلا</option>
+<option>عطبرة</option>
+<option>بورتسودان</option>
+<option>مدني</option>
+<option>القضارف</option>
+<option>دنقلا</option>
 
 
 </select>
 
 
 
-<button id="seatBtn" disabled>
+<button id="searchBtn" disabled>
 
-اختر المقعد
+بحث عن الرحلات
 
 </button>
-
-
-<p id="message"></p>
 
 
 </div>
@@ -241,53 +235,48 @@ footer{
 
 
 
+
 <script>
 
 
-let trip=document.getElementById("trip");
-
-let seatBtn=document.getElementById("seatBtn");
-
-let message=document.getElementById("message");
+let from=document.getElementById("from");
+let to=document.getElementById("to");
+let searchBtn=document.getElementById("searchBtn");
 
 
 
-trip.addEventListener("change",function(){
+function check(){
 
+if(from.value!="" && to.value!=""){
 
-if(trip.value!=""){
-
-
-seatBtn.disabled=false;
-
-
-message.innerHTML="✅ تم اختيار الرحلة: "+trip.value;
-
+searchBtn.disabled=false;
 
 }else{
 
+searchBtn.disabled=true;
 
-seatBtn.disabled=true;
-
-
-message.innerHTML="";
-
+}
 
 }
 
 
-});
+
+from.addEventListener("change",check);
+
+to.addEventListener("change",check);
 
 
 
 
-seatBtn.onclick=function(){
+searchBtn.onclick=function(){
 
 
-localStorage.setItem("selectedTrip",trip.value);
+localStorage.setItem("fromCity",from.value);
+
+localStorage.setItem("toCity",to.value);
 
 
-window.location.href="seats.html";
+window.location.href="companies.html";
 
 
 };
@@ -295,7 +284,6 @@ window.location.href="seats.html";
 
 
 </script>
-
 
 
 </body>
