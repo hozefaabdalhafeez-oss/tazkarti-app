@@ -107,6 +107,25 @@ document.getElementById("time").innerText = time;
 document.getElementById("price").innerText = price;
 document.getElementById("transaction").innerText = transaction;
 
+// ===== حفظ الحجز الحالي كعنصر جديد في قائمة الحجوزات =====
+let currentBooking = {
+    id: Date.now(),
+    company: company,
+    trip: from + " → " + to,
+    seat: seat,
+    name: name,
+    phone: phone,
+    time: time,
+    price: price,
+    transaction: transaction,
+    status: "قيد التحقق",
+    date: new Date().toLocaleString("ar-EG")
+};
+
+let bookings = JSON.parse(localStorage.getItem("bookings")) || [];
+bookings.push(currentBooking);
+localStorage.setItem("bookings", JSON.stringify(bookings));
+
 let adminNumber = "249118688558";
 
 let message =
