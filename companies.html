@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الرحلات المتاحة - تذكرتي</title>
+
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f7fa;
+}
+
+
+header{
+
+    background:linear-gradient(135deg,#0d6efd,#084298);
+    color:white;
+    text-align:center;
+    padding:25px;
+
+}
+
+
+header h1{
+    margin:0;
+}
+
+
+
+.card{
+
+    background:white;
+    width:90%;
+    max-width:450px;
+    margin:25px auto;
+    padding:20px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+
+}
+
+
+.company{
+
+    border:1px solid #ddd;
+    border-radius:15px;
+    padding:15px;
+    margin-top:15px;
+
+}
+
+
+.company h3{
+
+    color:#0d6efd;
+    margin-top:0;
+
+}
+
+
+button{
+
+    width:100%;
+    padding:14px;
+    margin-top:15px;
+    background:#0d6efd;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:17px;
+
+}
+
+
+
+.back{
+
+    background:#777;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<h1>الرحلات المتاحة</h1>
+
+<p id="route"></p>
+
+</header>
+
+
+
+
+<div class="card">
+
+
+<div class="company">
+
+<h3>🚌 شركة الأصيل</h3>
+
+<p>التحرك: 5:30 صباحًا</p>
+
+<p>الوصول: 3:00 مساءً</p>
+
+<p>السعر: 160</p>
+
+
+<button onclick="choose('الأصيل','160')">
+اختيار
+</button>
+
+
+</div>
+
+
+
+
+<div class="company">
+
+<h3>🚌 شركة شريان</h3>
+
+<p>التحرك: 5:30 صباحًا</p>
+
+<p>الوصول: 3:30 مساءً</p>
+
+<p>السعر: 150</p>
+
+
+<button onclick="choose('شريان','150')">
+اختيار
+</button>
+
+
+</div>
+
+
+
+
+<div class="company">
+
+<h3>🚌 شركة رويال</h3>
+
+<p>التحرك: 6:00 صباحًا</p>
+
+<p>الوصول: 4:00 مساءً</p>
+
+<p>السعر: 170</p>
+
+
+<button onclick="choose('رويال','170')">
+اختيار
+</button>
+
+
+</div>
+
+
+
+
+<button class="back" onclick="history.back()">
+
+رجوع
+
+</button>
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+let from=localStorage.getItem("fromCity");
+
+let to=localStorage.getItem("toCity");
+
+
+document.getElementById("route").innerHTML=
+from+" ← "+to;
+
+
+
+function choose(company,price){
+
+
+localStorage.setItem("company",company);
+
+localStorage.setItem("price",price);
+
+
+window.location.href="seats.html";
+
+
+}
+
+
+
+</script>
+
+
+
+</body>
+
+  </html>
