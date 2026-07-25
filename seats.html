@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +9,7 @@
 <title>اختيار المقعد - تذكرتي</title>
 
 <style>
+
 body{
     font-family:Arial,sans-serif;
     background:#f5f7fa;
@@ -23,24 +26,31 @@ header{
 
 .card{
     background:white;
-    max-width:450px;
+    max-width:500px;
     margin:20px auto;
     padding:20px;
-    border-radius:12px;
+    border-radius:15px;
 }
 
 .bus{
-    display:grid;
-    grid-template-columns:60px 40px 60px;
-    gap:10px;
-    justify-content:center;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    align-items:center;
     margin-top:20px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:60px 60px 40px 60px 60px;
+    gap:8px;
+    justify-content:center;
 }
 
 .seat{
     background:#198754;
     color:white;
-    padding:15px 5px;
+    padding:12px 5px;
     border-radius:8px;
     cursor:pointer;
 }
@@ -51,6 +61,20 @@ header{
 
 .empty{
     width:40px;
+}
+
+.door{
+    background:#777;
+    color:white;
+    padding:12px;
+    border-radius:8px;
+    width:120px;
+}
+
+.last-row{
+    display:flex;
+    gap:8px;
+    justify-content:center;
 }
 
 button{
@@ -68,9 +92,6 @@ button:disabled{
     background:#999;
 }
 
-#info{
-    margin-top:15px;
-}
 </style>
 
 </head>
@@ -89,37 +110,139 @@ button:disabled{
 
 <div class="bus">
 
-<div class="seat" onclick="chooseSeat(this)">1</div>
-<div class="empty"></div>
-<div class="seat" onclick="chooseSeat(this)">2</div>
 
+<div class="row">
 <div class="seat" onclick="chooseSeat(this)">3</div>
-<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">4</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">2</div>
+<div class="seat" onclick="chooseSeat(this)">1</div>
+</div>
 
-<div class="seat" onclick="chooseSeat(this)">5</div>
-<div class="empty"></div>
-<div class="seat" onclick="chooseSeat(this)">6</div>
 
+<div class="row">
 <div class="seat" onclick="chooseSeat(this)">7</div>
-<div class="empty"></div>
 <div class="seat" onclick="chooseSeat(this)">8</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">6</div>
+<div class="seat" onclick="chooseSeat(this)">5</div>
+</div>
 
-<div class="seat" onclick="chooseSeat(this)">9</div>
-<div class="empty"></div>
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">11</div>
+<div class="seat" onclick="chooseSeat(this)">12</div>
+<div></div>
 <div class="seat" onclick="chooseSeat(this)">10</div>
+<div class="seat" onclick="chooseSeat(this)">9</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">15</div>
+<div class="seat" onclick="chooseSeat(this)">16</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">14</div>
+<div class="seat" onclick="chooseSeat(this)">13</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">19</div>
+<div class="seat" onclick="chooseSeat(this)">20</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">18</div>
+<div class="seat" onclick="chooseSeat(this)">17</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">23</div>
+<div class="seat" onclick="chooseSeat(this)">24</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">22</div>
+<div class="seat" onclick="chooseSeat(this)">21</div>
+</div>
+
+
+<div class="door">
+🚪 الباب الخلفي
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">26</div>
+<div class="seat" onclick="chooseSeat(this)">25</div>
+<div></div>
+<div></div>
+<div></div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">27</div>
+<div class="seat" onclick="chooseSeat(this)">28</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">30</div>
+<div class="seat" onclick="chooseSeat(this)">29</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">31</div>
+<div class="seat" onclick="chooseSeat(this)">32</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">34</div>
+<div class="seat" onclick="chooseSeat(this)">33</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">35</div>
+<div class="seat" onclick="chooseSeat(this)">36</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">38</div>
+<div class="seat" onclick="chooseSeat(this)">37</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">39</div>
+<div class="seat" onclick="chooseSeat(this)">40</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">42</div>
+<div class="seat" onclick="chooseSeat(this)">41</div>
+</div>
+
+
+<div class="row">
+<div class="seat" onclick="chooseSeat(this)">43</div>
+<div class="seat" onclick="chooseSeat(this)">44</div>
+<div></div>
+<div class="seat" onclick="chooseSeat(this)">46</div>
+<div class="seat" onclick="chooseSeat(this)">45</div>
+</div>
+
+
+<div class="last-row">
+<div class="seat" onclick="chooseSeat(this)">47</div>
+<div class="seat" onclick="chooseSeat(this)">48</div>
+<div class="seat" onclick="chooseSeat(this)">49</div>
+<div class="seat" onclick="chooseSeat(this)">50</div>
+<div class="seat" onclick="chooseSeat(this)">51</div>
+</div>
+
 
 </div>
 
-<p id="info">
-لم يتم اختيار مقعد
-</p>
+<p id="info">لم يتم اختيار مقعد</p>
 
 <button id="nextBtn" disabled onclick="continueBooking()">
 متابعة
 </button>
 
 </div>
+
 
 <script>
 
@@ -128,6 +251,7 @@ let selectedSeat = "";
 
 document.getElementById("tripName").innerHTML =
 "الرحلة: " + (trip || "غير محددة");
+
 
 function chooseSeat(seat){
 
@@ -144,19 +268,18 @@ localStorage.setItem("selectedSeat", selectedSeat);
 document.getElementById("info").innerHTML =
 "تم اختيار المقعد رقم: " + selectedSeat;
 
-document.getElementById("nextBtn").disabled = false;
+document.getElementById("nextBtn").disabled=false;
 
 }
 
+
 function continueBooking(){
 
-alert("الزر يعمل");
-
-window.location.href = "passenger.html";
+window.location.href="passenger.html";
 
 }
 
 </script>
 
 </body>
-</html>
+    </html>
