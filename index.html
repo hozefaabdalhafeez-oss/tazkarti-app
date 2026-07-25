@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
@@ -15,9 +16,6 @@ body{
     background:#f5f7fa;
 }
 
-
-/* الهيدر */
-
 header{
     background:linear-gradient(135deg,#0d6efd,#084298);
     color:white;
@@ -25,7 +23,6 @@ header{
     padding:30px 20px;
     box-shadow:0 4px 15px rgba(0,0,0,.2);
 }
-
 
 .logo{
     width:100px;
@@ -39,31 +36,23 @@ header{
     overflow:hidden;
 }
 
-
 .logo img{
     width:100%;
     height:100%;
     object-fit:contain;
 }
 
-
 header h1{
     margin:15px 0 5px;
     font-size:34px;
 }
-
 
 header p{
     margin:0;
     font-size:18px;
 }
 
-
-
-/* البطاقة */
-
 .card{
-
     background:white;
     width:90%;
     max-width:450px;
@@ -71,42 +60,29 @@ header p{
     padding:25px;
     border-radius:20px;
     box-shadow:0 8px 20px rgba(0,0,0,.08);
-
 }
-
 
 h2{
-
     text-align:center;
     color:#0d6efd;
-
 }
 
-
 label{
-
     display:block;
     margin-top:20px;
     font-weight:bold;
-
 }
 
-
 select{
-
     width:100%;
     padding:15px;
     margin-top:10px;
     border-radius:12px;
     border:1px solid #ccc;
     font-size:18px;
-
 }
 
-
-
 button{
-
     width:100%;
     padding:16px;
     margin-top:25px;
@@ -116,176 +92,95 @@ button{
     border-radius:12px;
     font-size:18px;
     cursor:pointer;
-
 }
-
-
 
 button:disabled{
-
     background:#999;
-
 }
 
-
-
 footer{
-
     text-align:center;
     color:#777;
     margin:40px 0;
-
 }
 
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
 <div class="logo">
 <img src="logo.png" alt="شعار تذكرتي">
 </div>
-
 <h1>تذكرتي</h1>
-
 <p>احجز تذكرتك بسهولة وأمان</p>
-
 </header>
-
-
 
 <div class="card">
 
-
 <h2>اختر رحلتك</h2>
 
-
-
-<label>
-من أين؟
-</label>
-
+<label>من أين؟</label>
 
 <select id="from">
-
-<option value="">
--- اختر مدينة المغادرة --
-</option>
-
+<option value="">-- اختر مدينة المغادرة --</option>
 <option>الخرطوم</option>
+<option>أمدرمان</option>
 <option>كسلا</option>
 <option>عطبرة</option>
 <option>بورتسودان</option>
 <option>مدني</option>
 <option>القضارف</option>
 <option>دنقلا</option>
-
+<option>ربك</option>
 </select>
 
-
-
-
-<label>
-إلى أين؟
-</label>
-
+<label>إلى أين؟</label>
 
 <select id="to">
-
-
-<option value="">
--- اختر مدينة الوصول --
-</option>
-
+<option value="">-- اختر مدينة الوصول --</option>
 <option>الخرطوم</option>
+<option>أمدرمان</option>
 <option>كسلا</option>
 <option>عطبرة</option>
 <option>بورتسودان</option>
 <option>مدني</option>
 <option>القضارف</option>
 <option>دنقلا</option>
-
-
+<option>ربك</option>
 </select>
 
-
-
-<button id="searchBtn" disabled>
-
-بحث عن الرحلات
-
-</button>
-
+<button id="searchBtn" disabled>بحث عن الرحلات</button>
 
 </div>
 
-
-
-<footer>
-
-© تذكرتي
-
-</footer>
-
-
-
+<footer>© تذكرتي</footer>
 
 <script>
-
 
 let from=document.getElementById("from");
 let to=document.getElementById("to");
 let searchBtn=document.getElementById("searchBtn");
 
-
-
 function check(){
-
-if(from.value!="" && to.value!=""){
-
-searchBtn.disabled=false;
-
-}else{
-
-searchBtn.disabled=true;
-
+    if(from.value!="" && to.value!=""){
+        searchBtn.disabled=false;
+    }else{
+        searchBtn.disabled=true;
+    }
 }
-
-}
-
-
 
 from.addEventListener("change",check);
-
 to.addEventListener("change",check);
 
-
-
-
 searchBtn.onclick=function(){
-
-
-localStorage.setItem("fromCity",from.value);
-
-localStorage.setItem("toCity",to.value);
-
-
-window.location.href="companies.html";
-
-
+    localStorage.setItem("fromCity",from.value);
+    localStorage.setItem("toCity",to.value);
+    window.location.href="companies.html";
 };
-
-
 
 </script>
 
-
 </body>
-
 </html>
