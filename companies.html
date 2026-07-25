@@ -2,348 +2,106 @@
 <html lang="ar" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>الرحلات المتاحة - تذكرتي</title>
 
-
 <style>
-
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f7fa;
-}
-
-
-header{
-
-    background:linear-gradient(135deg,#0d6efd,#084298);
-    color:white;
-    text-align:center;
-    padding:25px 15px;
-
-}
-
-
-.logo{
-
-    width:80px;
-    height:80px;
-    background:white;
-    border-radius:50%;
-    margin:auto;
-    overflow:hidden;
-
-}
-
-
-.logo img{
-
-    width:100%;
-    height:100%;
-    object-fit:contain;
-
-}
-
-
-header h1{
-
-    margin:10px 0 5px;
-
-}
-
-
-.card{
-
-    background:white;
-    width:90%;
-    max-width:450px;
-    margin:25px auto;
-    padding:20px;
-    border-radius:18px;
-    box-shadow:0 5px 15px rgba(0,0,0,.1);
-
-}
-
-
-.route{
-
-    text-align:center;
-    color:#0d6efd;
-    font-size:20px;
-    font-weight:bold;
-
-}
-
-
-
-.company{
-
-    border:1px solid #ddd;
-    border-radius:15px;
-    padding:18px;
-    margin-top:20px;
-
-}
-
-
-
-.company h3{
-
-    margin-top:0;
-    color:#0d6efd;
-
-}
-
-
-
-.info{
-
-    line-height:1.8;
-    color:#555;
-
-}
-
-
-
-.available{
-
-    color:#198754;
-    font-weight:bold;
-
-}
-
-
-.full{
-
-    color:#dc3545;
-    font-weight:bold;
-
-}
-
-
-
-button{
-
-    width:100%;
-    padding:14px;
-    margin-top:15px;
-    background:#0d6efd;
-    color:white;
-    border:none;
-    border-radius:10px;
-    font-size:17px;
-    cursor:pointer;
-
-}
-
-
-
-button:disabled{
-
-    background:#999;
-
-}
-
-
-
-.back{
-
-    background:#777;
-
-}
-
-
+body{ margin:0; font-family:Arial,sans-serif; background:#f5f7fa; }
+header{ background:linear-gradient(135deg,#0d6efd,#084298); color:white; text-align:center; padding:25px 15px; }
+.logo{ width:80px; height:80px; background:white; border-radius:50%; margin:auto; overflow:hidden; }
+.logo img{ width:100%; height:100%; object-fit:contain; }
+header h1{ margin:10px 0 5px; }
+.card{ background:white; width:90%; max-width:450px; margin:25px auto; padding:20px; border-radius:18px; box-shadow:0 5px 15px rgba(0,0,0,.1); }
+.route{ text-align:center; color:#0d6efd; font-size:20px; font-weight:bold; }
+.company{ border:1px solid #ddd; border-radius:15px; padding:18px; margin-top:20px; }
+.company h3{ margin-top:0; color:#0d6efd; }
+.info{ line-height:1.8; color:#555; }
+.available{ color:#198754; font-weight:bold; }
+.full{ color:#dc3545; font-weight:bold; }
+.empty-msg{ text-align:center; color:#777; padding:30px 10px; }
+button{ width:100%; padding:14px; margin-top:15px; background:#0d6efd; color:white; border:none; border-radius:10px; font-size:17px; cursor:pointer; }
+button:disabled{ background:#999; }
+.back{ background:#777; }
 </style>
-
 </head>
-
 
 <body>
 
-
 <header>
-
-
-<div class="logo">
-
-<img src="logo.png" alt="شعار تذكرتي">
-
-</div>
-
-
+<div class="logo"><img src="logo.png" alt="شعار تذكرتي"></div>
 <h1>الرحلات المتاحة</h1>
-
-
 <p>اختر الشركة المناسبة لك</p>
-
-
 </header>
-
-
-
 
 <div class="card">
 
-
 <div class="route" id="route"></div>
 
+<div id="companiesList"></div>
 
-
-<div class="company">
-
-
-<h3>🚌 شركة الأصيل</h3>
-
-<div class="info">
-
-التحرك: 5:30 صباحًا<br>
-
-الوصول: 3:00 مساءً<br>
-
-السعر: 160<br>
-
-المقاعد المتاحة: 20
+<button class="back" onclick="history.back()">رجوع</button>
 
 </div>
-
-
-<p class="available">
-🟢 متاحة للحجز
-</p>
-
-
-<button onclick="choose('الأصيل','160','5:30 صباحًا - 3:00 مساءً')">
-اختيار الرحلة
-</button>
-
-
-</div>
-
-
-
-
-<div class="company">
-
-
-<h3>🚌 شركة شريان</h3>
-
-
-<div class="info">
-
-التحرك: 5:30 صباحًا<br>
-
-الوصول: 3:30 مساءً<br>
-
-السعر: 150<br>
-
-المقاعد المتاحة: 12
-
-</div>
-
-
-<p class="available">
-🟢 متاحة للحجز
-</p>
-
-
-<button onclick="choose('شريان','150','5:30 صباحًا - 3:30 مساءً')">
-اختيار الرحلة
-</button>
-
-
-</div>
-
-
-
-
-
-<div class="company">
-
-
-<h3>🚌 شركة رويال</h3>
-
-
-<div class="info">
-
-التحرك: 6:00 صباحًا<br>
-
-الوصول: 4:00 مساءً<br>
-
-السعر: 170<br>
-
-المقاعد المتاحة: 0
-
-</div>
-
-
-<p class="full">
-🔴 مكتملة
-</p>
-
-
-<button disabled>
-غير متاحة
-</button>
-
-
-</div>
-
-
-
-
-<button class="back" onclick="history.back()">
-
-رجوع
-
-</button>
-
-
-
-</div>
-
-
-
-
 
 <script>
 
+// ===== قائمة الشركات - أضف أي شركة جديدة كسطر واحد هنا =====
+let companies = [
+  { name:"الأصيل", from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:00 مساءً", price:160, seats:20 },
+  { name:"شريان",  from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:30 مساءً", price:150, seats:12 },
+  { name:"رويال",  from:"الخرطوم", to:"بورتسودان", departure:"6:00 صباحًا", arrival:"4:00 مساءً", price:170, seats:0  },
+  // مثال لإضافة مسار جديد بشركة جديدة:
+  // { name:"النيل الأزرق", from:"الخرطوم", to:"كسلا", departure:"7:00 صباحًا", arrival:"1:00 مساءً", price:120, seats:15 },
+];
 
 let from = localStorage.getItem("fromCity");
-
 let to = localStorage.getItem("toCity");
 
+document.getElementById("route").innerHTML = from + " → " + to;
 
-document.getElementById("route").innerHTML =
-from + " → " + to;
+// فلترة الشركات حسب المسار المختار فقط
+let matchingCompanies = companies.filter(c => c.from === from && c.to === to);
 
+let listEl = document.getElementById("companiesList");
 
+if (matchingCompanies.length === 0) {
+    listEl.innerHTML = `<p class="empty-msg">لا توجد رحلات متاحة على هذا المسار حاليًا 🙁</p>`;
+} else {
+    matchingCompanies.forEach((c, index) => {
+        let isFull = c.seats <= 0;
+        let statusHtml = isFull
+            ? `<p class="full">🔴 مكتملة</p>`
+            : `<p class="available">🟢 متاحة للحجز (${c.seats} مقعد متاح)</p>`;
+        let buttonHtml = isFull
+            ? `<button disabled>غير متاحة</button>`
+            : `<button onclick="choose(${index})">اختيار الرحلة</button>`;
 
-function choose(company, price, time){
-
-
-localStorage.setItem("company", company);
-
-localStorage.setItem("price", price);
-
-localStorage.setItem("time", time);
-
-localStorage.setItem("selectedTrip", from + " → " + to);
-
-
-window.location.href = "seats.html";
-
-
+        listEl.innerHTML += `
+            <div class="company">
+                <h3>🚌 شركة ${c.name}</h3>
+                <div class="info">
+                    التحرك: ${c.departure}<br>
+                    الوصول: ${c.arrival}<br>
+                    السعر: ${c.price}<br>
+                    المقاعد المتاحة: ${c.seats}
+                </div>
+                ${statusHtml}
+                ${buttonHtml}
+            </div>`;
+    });
 }
 
+function choose(index){
+    let c = matchingCompanies[index];
+    localStorage.setItem("company", c.name);
+    localStorage.setItem("price", c.price);
+    localStorage.setItem("time", c.departure + " - " + c.arrival);
+    localStorage.setItem("selectedTrip", c.from + " → " + c.to);
+    window.location.href = "seats.html";
+}
 
 </script>
 
-
-
 </body>
-
 </html>
