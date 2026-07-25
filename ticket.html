@@ -1,143 +1,129 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>التذكرة الإلكترونية - تذكرتي</title>
+<title>ملخص الطلب - تذكرتي</title>
 
 <style>
 body{
-    font-family:Arial,sans-serif;
+    font-family: Arial, sans-serif;
     background:#f5f7fa;
     margin:0;
+    text-align:center;
 }
 
 header{
     background:#0d6efd;
     color:white;
-    text-align:center;
     padding:20px;
 }
 
-.ticket{
+.container{
     max-width:450px;
     margin:30px auto;
     background:white;
-    border-radius:15px;
     padding:20px;
+    border-radius:15px;
     box-shadow:0 3px 10px #ccc;
 }
 
-.ticket h2{
-    text-align:center;
-    color:#0d6efd;
+.status{
+    background:#fff3cd;
+    color:#856404;
+    padding:12px;
+    border-radius:10px;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
 .item{
+    text-align:right;
     margin:12px 0;
-    font-size:18px;
+    font-size:17px;
 }
 
-.status{
-    margin-top:20px;
-    padding:12px;
-    background:#198754;
-    color:white;
-    text-align:center;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-button{
+.whatsapp-btn{
+    display:block;
     width:100%;
-    margin-top:15px;
-    padding:12px;
-    background:#0d6efd;
+    margin-top:20px;
+    padding:14px;
+    background:#25D366;
     color:white;
     border:none;
     border-radius:10px;
-    font-size:16px;
+    font-size:17px;
+    text-decoration:none;
+    box-sizing:border-box;
 }
 </style>
-
 </head>
 
 <body>
 
 <header>
-<h1>🎫 التذكرة الإلكترونية</h1>
+<h1>ملخص طلب الحجز</h1>
 </header>
 
-
-<div class="ticket">
-
-<h2>تذكرتي</h2>
-
-<div class="item">🎟 رقم التذكرة: TK-000001</div>
-
-<div class="item">🚌 الشركة: <span id="company"></span></div>
-
-<div class="item">📍 الرحلة: <span id="trip"></span></div>
-
-<div class="item">💺 المقعد: <span id="seat"></span></div>
-
-<div class="item">👤 اسم الراكب: <span id="name"></span></div>
-
-<div class="item">📞 الهاتف: <span id="phone"></span></div>
-
-<div class="item">⏰ موعد التحرك: <span id="time"></span></div>
-
-<div class="item">💰 السعر: <span id="price"></span></div>
-
-<div class="item">💳 رقم العملية: <span id="transaction"></span></div>
-
+<div class="container">
 
 <div class="status">
-✅ التذكرة صالحة للسفر
+⏳ طلبك قيد المراجعة — سيتم تأكيد التذكرة خلال ساعة عبر واتساب
 </div>
 
+<div class="item">🚌 الشركة: <span id="company"></span></div>
+<div class="item">📍 الرحلة: <span id="trip"></span></div>
+<div class="item">💺 المقعد: <span id="seat"></span></div>
+<div class="item">👤 الاسم: <span id="name"></span></div>
+<div class="item">📞 الهاتف: <span id="phone"></span></div>
+<div class="item">⏰ التحرك: <span id="time"></span></div>
+<div class="item">💰 السعر: <span id="price"></span></div>
+<div class="item">🧾 رقم العملية: <span id="transaction"></span></div>
 
-<button onclick="history.back()">
-⬅️ رجوع
-</button>
-
+<a id="whatsappLink" class="whatsapp-btn" target="_blank">
+📲 إرسال تفاصيل الحجز عبر واتساب
+</a>
 
 </div>
-
 
 <script>
 
-document.getElementById("company").innerText =
-localStorage.getItem("company");
+let company = localStorage.getItem("company") || "غير محددة";
+let from = localStorage.getItem("fromCity") || "";
+let to = localStorage.getItem("toCity") || "";
+let seat = localStorage.getItem("selectedSeat") || "غير محدد";
+let name = localStorage.getItem("passengerName") || "غير محدد";
+let phone = localStorage.getItem("passengerPhone") || "غير محدد";
+let time = localStorage.getItem("time") || "غير محدد";
+let price = localStorage.getItem("price") || "غير محدد";
+let transaction = localStorage.getItem("transaction") || "غير محدد";
 
-let from = localStorage.getItem("from");
-let to = localStorage.getItem("to");
+document.getElementById("company").innerText = company;
+document.getElementById("trip").innerText = from + " → " + to;
+document.getElementById("seat").innerText = seat;
+document.getElementById("name").innerText = name;
+document.getElementById("phone").innerText = phone;
+document.getElementById("time").innerText = time;
+document.getElementById("price").innerText = price;
+document.getElementById("transaction").innerText = transaction;
 
-document.getElementById("trip").innerText =
-from + " → " + to;
+let adminNumber = "249118688558";
 
-document.getElementById("seat").innerText =
-localStorage.getItem("seat");
+let message =
+"طلب حجز جديد - تذكرتي%0A" +
+"الشركة: " + company + "%0A" +
+"الرحلة: " + from + " → " + to + "%0A" +
+"المقعد: " + seat + "%0A" +
+"الاسم: " + name + "%0A" +
+"الهاتف: " + phone + "%0A" +
+"وقت التحرك: " + time + "%0A" +
+"السعر: " + price + "%0A" +
+"رقم العملية: " + transaction;
 
-document.getElementById("name").innerText =
-localStorage.getItem("name");
-
-document.getElementById("phone").innerText =
-localStorage.getItem("phone");
-
-document.getElementById("time").innerText =
-localStorage.getItem("time");
-
-document.getElementById("price").innerText =
-localStorage.getItem("price");
-
-document.getElementById("transaction").innerText =
-localStorage.getItem("transaction");
+document.getElementById("whatsappLink").href =
+"https://wa.me/" + adminNumber + "?text=" + message;
 
 </script>
-
 
 </body>
 </html>
