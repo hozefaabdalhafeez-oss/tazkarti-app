@@ -48,11 +48,28 @@ button:disabled{ background:#999; }
 
 // ===== قائمة الشركات - أضف أي شركة جديدة كسطر واحد هنا =====
 let companies = [
-  { name:"الأصيل", from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:00 مساءً", price:160, seats:20 },
-  { name:"شريان",  from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:30 مساءً", price:150, seats:12 },
-  { name:"رويال",  from:"الخرطوم", to:"بورتسودان", departure:"6:00 صباحًا", arrival:"4:00 مساءً", price:170, seats:0  },
-  // مثال لإضافة مسار جديد بشركة جديدة:
-  // { name:"النيل الأزرق", from:"الخرطوم", to:"كسلا", departure:"7:00 صباحًا", arrival:"1:00 مساءً", price:120, seats:15 },
+  { name:"الأصيل",      from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:00 مساءً", price:160000, seats:20 },
+  { name:"شريان",       from:"الخرطوم", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:30 مساءً", price:150000, seats:12 },
+  { name:"رويال",       from:"الخرطوم", to:"بورتسودان", departure:"6:00 صباحًا", arrival:"4:00 مساءً", price:170000, seats:0  },
+
+  { name:"الأرسنال",    from:"كسلا", to:"عطبرة",     departure:"5:00 صباحًا", arrival:"2:00 ظهرًا",  price:138000, seats:20 },
+  { name:"الأرسنال",    from:"كسلا", to:"بورتسودان", departure:"5:00 صباحًا", arrival:"2:00 ظهرًا",  price:138000, seats:20 },
+  { name:"الأصيل",      from:"كسلا", to:"أمدرمان",   departure:"5:00 صباحًا", arrival:"3:00 مساءً",  price:138000, seats:20 },
+  { name:"الجودة",      from:"كسلا", to:"الخرطوم",   departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"فخر السودان", from:"كسلا", to:"أمدرمان",   departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"فخر السودان", from:"كسلا", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"عرجون",       from:"كسلا", to:"أمدرمان",   departure:"5:30 صباحًا", arrival:"5:00 مساءً",  price:138000, seats:20 },
+  { name:"عرجون",       from:"كسلا", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"أبونخيلة",    from:"كسلا", to:"عطبرة",     departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"أبونخيلة",    from:"كسلا", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"3:00 مساءً",  price:138000, seats:20 },
+  { name:"أنهار",       from:"كسلا", to:"الخرطوم",   departure:"5:30 صباحًا", arrival:"5:00 مساءً",  price:138000, seats:20 },
+  { name:"جسكابو",      from:"كسلا", to:"بورتسودان", departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"بختان",       from:"كسلا", to:"عطبرة",     departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
+  { name:"حدباي",       from:"كسلا", to:"عطبرة",     departure:"5:30 صباحًا", arrival:"3:00 مساءً",  price:138000, seats:20 },
+  { name:"رويال",       from:"كسلا", to:"ربك",       departure:"5:30 صباحًا", arrival:"",             price:160000, seats:20 },
+  { name:"العقيدة",     from:"كسلا", to:"مدني",      departure:"5:30 صباحًا", arrival:"3:00 مساءً",  price:108000, seats:20 },
+  { name:"ود سطيح",     from:"كسلا", to:"مدني",      departure:"5:30 صباحًا", arrival:"3:00 مساءً",  price:108000, seats:20 },
+  { name:"الحرمين",     from:"كسلا", to:"مدني",      departure:"5:30 صباحًا", arrival:"4:00 مساءً",  price:138000, seats:20 },
 ];
 
 let from = localStorage.getItem("fromCity");
