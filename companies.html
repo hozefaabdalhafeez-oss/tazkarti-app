@@ -216,7 +216,7 @@ button:disabled{
 </p>
 
 
-<button onclick="choose('الأصيل','160')">
+<button onclick="choose('الأصيل','160','5:30 صباحًا - 3:00 مساءً')">
 اختيار الرحلة
 </button>
 
@@ -250,7 +250,7 @@ button:disabled{
 </p>
 
 
-<button onclick="choose('شريان','150')">
+<button onclick="choose('شريان','150','5:30 صباحًا - 3:30 مساءً')">
 اختيار الرحلة
 </button>
 
@@ -322,15 +322,19 @@ from + " → " + to;
 
 
 
-function choose(company,price){
+function choose(company, price, time){
 
 
-localStorage.setItem("company",company);
+localStorage.setItem("company", company);
 
-localStorage.setItem("price",price);
+localStorage.setItem("price", price);
+
+localStorage.setItem("time", time);
+
+localStorage.setItem("selectedTrip", from + " → " + to);
 
 
-window.location.href="seats.html";
+window.location.href = "seats.html";
 
 
 }
